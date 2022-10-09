@@ -7,6 +7,7 @@ import ShowMainData from '../components/show/ShowMainData';
 import Cast from '../components/show/Cast';
 import Seasons from '../components/show/Seasons';
 import Details from '../components/show/Details';
+import { InfoBlock, ShowPageWrapper } from './Show.styled';
 
 const Show = () => {
   // const [show, setShow] = useState(null);
@@ -78,7 +79,7 @@ const Show = () => {
   // apiGet(`/search`)
 
   return (
-    <div>
+    <ShowPageWrapper>
       <ShowMainData
         image={state.show.image}
         name={state.show.name}
@@ -87,25 +88,25 @@ const Show = () => {
         tags={state.show.genres}
       />
 
-      <div>
+      <InfoBlock>
         <h2> Details</h2>
         <Details
           status={state.show.status}
           network={state.show.network}
           premiered={state.show.premiered}
         />
-      </div>
+      </InfoBlock>
 
-      <div>
+      <InfoBlock>
         <h2> Seasons </h2>
         <Seasons seasons={state.show._embedded.seasons} />
-      </div>
+      </InfoBlock>
 
-      <div>
+      <InfoBlock>
         <h2>Cast</h2>
         <Cast cast={state.show._embedded.cast} />
-      </div>
-    </div>
+      </InfoBlock>
+    </ShowPageWrapper>
   );
 };
 
